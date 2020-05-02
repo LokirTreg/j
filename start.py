@@ -22,10 +22,10 @@ def load_user(user_id):
 
 
 class LoginForm(FlaskForm):
-    email = EmailField('Почта', validators=[DataRequired()])
-    password = PasswordField('Пароль', validators=[DataRequired()])
-    remember_me = BooleanField('Запомнить меня')
-    submit = SubmitField('Войти')
+    name = StringField('Login', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    remember_me = BooleanField('Remember me')
+    submit = SubmitField('Sign-up')
 
 
 @app.route('/')
@@ -35,21 +35,41 @@ def qwe():
                            js=url_for("static", filename="js/jQuery.js"),
                            js2=url_for("static", filename="js/main.js"))
 
-@app.route('/login')
-def qe():
-    return render_template('sign-in.html', style=url_for("static", filename="css/normalize.css"),
+@app.route('/register', methods=['GET', 'POST'])
+def qk():
+    db_session.global_init("db/blogs.sqlite")
+    form = LoginForm()
+    if request.method == 'POST' and form.validate_on_submit():
+        session = db_session.create_session()
+        name = form.name.data
+        user = session.query(User).filter(User.name == name).first()
+        if user and user.check_password(form.password.data):
+            login_user(user, remember=form.remember_me.data)
+            return redirect(f"/account/{name}")
+    return render_template('reg.html', style=url_for("static", filename="css/normalize.css"),
                            style2=url_for("static", filename="css/style.css"),
                            js=url_for("static", filename="js/jQuery.js"),
                            js2=url_for("static", filename="js/main.js"),
-                           style3=url_for("static", filename="css/stylesu.css"),)
+                           style3=url_for("static", filename="css/stylesu.css"),
+                           form=form)
 
-@app.route('/login')
-def q():
-    return render_template('sign-in.html', style=url_for("static", filename="css/normalize.css"),
+app.route('/login', methods=['GET', 'POST'])
+def qe():
+    db_session.global_init("db/blogs.sqlite")
+    form = LoginForm()
+    if request.method == 'POST' and form.validate_on_submit():
+        session = db_session.create_session()
+        name = form.name.data
+        user = session.query(User).filter(User.name == name).first()
+        if user and user.check_password(form.password.data):
+            login_user(user, remember=form.remember_me.data)
+            return redirect(f"/account/{name}")
+    return render_template('login.html', style=url_for("static", filename="css/normalize.css"),
                            style2=url_for("static", filename="css/style.css"),
                            js=url_for("static", filename="js/jQuery.js"),
                            js2=url_for("static", filename="js/main.js"),
-                           style3=url_for("static", filename="css/stylesu.css"),)
+                           style3=url_for("static", filename="css/stylesu.css"),
+                           form=form)
 
 
 if __name__ == '__main__':

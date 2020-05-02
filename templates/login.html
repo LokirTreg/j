@@ -1,13 +1,27 @@
-{% extends "base.html" %}
-
-{% block content %}
-<h1>Авторизация</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script type="text/javascript" src="{{js}}"></script>
+    <script type="text/javascript" src="{{js2}}"></script>
+    <script src="https://kit.fontawesome.com/6a0829fe8c.js" crossorigin="anonymous"></script>
+    <link href="{{style2}}" rel="stylesheet" type="text/css"/>
+    <link href="{{style3}}" rel="stylesheet" type="text/css"/>
+    <link href="{{style}}" rel="stylesheet" type="text/css"/>
+    <title>Sign-up</title>
+</head>
+<body>
+<div class="scene">
+    <div class="layer-sign"></div>
+</div>
+<h1>Sing-Up</h1>
 <form action="" method="post">
     {{ form.hidden_tag() }}
     <p>
-        {{ form.email.label }}<br>
-        {{ form.email(class="form-control", type="email") }}<br>
-        {% for error in form.email.errors %}
+        {{ form.name.label }}<br>
+        {{ form.name(class="form-control") }}<br>
+        {% for error in form.name.errors %}
     <div class="alert alert-danger" role="alert">
         {{ error }}
     </div>
@@ -26,4 +40,5 @@
     <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
     <div>{{ message }}</div>
 </form>
-{% endblock %}
+</body>
+</html>
