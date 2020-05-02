@@ -15,30 +15,38 @@
 <div class="scene">
     <div class="layer-sign"></div>
 </div>
-<h1>Sing-Up</h1>
+    <div class="form">
+<h1 class="form-h1">Sing-Up</h1>
 <form action="" method="post">
     {{ form.hidden_tag() }}
-    <p>
-        {{ form.name.label }}<br>
-        {{ form.name(class="form-control") }}<br>
+    <div class="input-form">
+        {{ form.name(type="text", placeholder="Login")}}<br>
         {% for error in form.name.errors %}
     <div class="alert alert-danger" role="alert">
         {{ error }}
     </div>
     {% endfor %}
-    </p>
-    <p>
-        {{ form.password.label }}<br>
-        {{ form.password(class="form-control", type="password") }}<br>
+    </div>
+    <div class="input-form">
+        {{ form.password(class="form-control", type="password", placeholder="Password") }}<br>
         {% for error in form.password.errors %}
     <div class="alert alert-danger" role="alert">
         {{ error }}
     </div>
     {% endfor %}
-    </p>
-    <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+    </div>
+    <div class="input-form">{{ form.submit(type="submit", value="Sign-up", class="but-su") }}</div>
     <div>{{ message }}</div>
+    <div>{{ form.remember_me() }} {{ form.remember_me.label }}</div>
 </form>
+    </div>
+<script type="text/javascript">
+        function parallax(event) {
+          this.querySelectorAll(".layer-sign").forEach((layer) => {
+            layer.style.transform = `translateX(${event.clientX / 50}px)`;
+          });
+        }
+        document.addEventListener("mousemove", parallax);
+      </script>
 </body>
 </html>
