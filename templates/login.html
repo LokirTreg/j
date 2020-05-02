@@ -16,18 +16,18 @@
     <div class="layer-sign"></div>
 </div>
     <div class="form">
-<h1>Sing-Up</h1>
+<h1 class="form-h1>Sing-Up</h1>
 <form action="" method="post">
     {{ form.hidden_tag() }}
-    <p>
+    <div class="input-form">
         {{ form.name.label }}<br>
-        {{ form.name(class="form-control") }}<br>
+        {{ form.name(class="input-form") }}<br>
         {% for error in form.name.errors %}
     <div class="alert alert-danger" role="alert">
         {{ error }}
     </div>
     {% endfor %}
-    </p>
+    </div>
     <p>
         {{ form.password.label }}<br>
         {{ form.password(class="form-control", type="password") }}<br>
