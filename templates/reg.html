@@ -9,9 +9,12 @@
     <link href="{{style2}}" rel="stylesheet" type="text/css" />
     <link href="{{style3}}" rel="stylesheet" type="text/css" />
     <link href="{{style}}" rel="stylesheet" type="text/css" />
-    <title>Sign-up</title>
+    <title>Sign-in</title>
 </head>
 <body>
+<div class="scene">
+    <div class="layer-sign"></div>
+</div>
 <h1>Регистрация</h1>
 <form action="" method="post">
     {{ form.hidden_tag() }}
@@ -52,53 +55,16 @@
     </p>
     {% endfor %}
     </p>
-    <p>
-        {{ form.surname.label }}<br>
-        {{ form.surname(class="form-control") }}<br>
-        {% for error in form.surname.errors %}
-    <p class="alert alert-danger" role="alert">
-        {{ error }}
-    </p>
-    {% endfor %}
-    </p>
-    <p>
-        {{ form.address.label }}<br>
-        {{ form.address(class="form-control") }}<br>
-        {% for error in form.address.errors %}
-    <p class="alert alert-danger" role="alert">
-        {{ error }}
-    </p>
-    {% endfor %}
-    </p>
-    <p>
-        {{ form.speciality.label }}<br>
-        {{ form.speciality(class="form-control") }}<br>
-        {% for error in form.speciality.errors %}
-    <p class="alert alert-danger" role="alert">
-        {{ error }}
-    </p>
-    {% endfor %}
-    </p>
-    <p>
-        {{ form.position.label }}<br>
-        {{ form.position(class="form-control") }}<br>
-        {% for error in form.position.errors %}
-    <p class="alert alert-danger" role="alert">
-        {{ error }}
-    </p>
-    {% endfor %}
-    </p>
-    <p>
-        {{ form.age.label }}<br>
-        {{ form.age(class="form-control") }}<br>
-        {% for error in form.age.errors %}
-    <p class="alert alert-danger" role="alert">
-        {{ error }}
-    </p>
-    {% endfor %}
-    </p>
     <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
     {{message}}
 </form>
+<script type="text/javascript">
+        function parallax(event) {
+          this.querySelectorAll(".layer-sign").forEach((layer) => {
+            layer.style.transform = `translateX(${event.clientX / 50}px)`;
+          });
+        }
+        document.addEventListener("mousemove", parallax);
+      </script>
 </body>
 </html>

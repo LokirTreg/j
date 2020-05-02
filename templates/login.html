@@ -40,5 +40,13 @@
     <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
     <div>{{ message }}</div>
 </form>
+<script type="text/javascript">
+        function parallax(event) {
+          this.querySelectorAll(".layer-sign").forEach((layer) => {
+            layer.style.transform = `translateX(${event.clientX / 50}px)`;
+          });
+        }
+        document.addEventListener("mousemove", parallax);
+      </script>
 </body>
 </html>
