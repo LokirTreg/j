@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="{{js}}"></script>
+    <script type="text/javascript" src="{{js2}}"></script>
+    <script src="https://kit.fontawesome.com/6a0829fe8c.js" crossorigin="anonymous"></script>
+    <link href="{{style2}}" rel="stylesheet" type="text/css" />
+    <link href="{{style3}}" rel="stylesheet" type="text/css" />
+    <link href="{{style}}" rel="stylesheet" type="text/css" />
+    <title>Sign-up</title>
+</head>
+<body>
+    <div class="scene">
+        <div class="layer-sign"></div>
+      </div>
+
+      <div class="form">
+		<h1>Sign-up</h1>
+		<div class="input-form">
+			<input type="text" placeholder="Log in">
+		</div>
+		<div class="input-form">
+			<input type="password" placeholder="Password">
+		</div>
+		<div class="input-form">
+            <input type="submit" value="Sign-up" class="but-su"></input>
+		</div>
+		<a href="#" class="forget">Forgot password?</a>
+	</div>
+
+
+    <script type="text/javascript">
+        function parallax(event) {
+          this.querySelectorAll(".layer-sign").forEach((layer) => {
+            layer.style.transform = `translateX(${event.clientX / 50}px)`;
+          });
+        }
+        document.addEventListener("mousemove", parallax);
+      </script>
+</body>
+</html>

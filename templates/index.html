@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script type="text/javascript" src="{{js}}"></script>
+    <script type="text/javascript" src="{{js2}}"></script>
+    <link href="{{style2}}" rel="stylesheet" type="text/css"/>
+    <link href="{{style}}" rel="stylesheet" type="text/css"/>
+    <link href="img/favicon.ico" rel="icon"/>
+    <script src="https://kit.fontawesome.com/6a0829fe8c.js" crossorigin="anonymous"></script>
+    <title>Capability Experiment | Creative Education</title>
+</head>
+<body>
+<progress value="0">
+    <div class="progress-container">
+        <span class="progress-bar"></span>
+    </div>
+</progress>
+<div class="header">
+    <ul class="header-ul">
+        <li class="header-li logo">Capability Experiment</li>
+        <li class="header-li search">
+            <div class="search-box">
+                <input type="text" class="search-txt" placeholder="Search"/>
+                <a href="#" class="search-btn"><i class="fas fa-search"></i></a>
+            </div>
+        </li>
+        <li class="header-li sign-up">
+            <a href="/login" class="but-su">
+                <span class="but-su-l t"></span>
+                <span class="but-su-l r"></span>
+                <span class="but-su-l b"></span>
+                <span class="but-su-l l"></span>
+                Sign up <i class="fas fa-sign-in-alt"></i>
+            </a>
+        </li>
+        <li class="header-li sign-in">
+            <a href="/register" class="but-li">
+                <span class="but-li-l tli"></span>
+                <span class="but-li-l rli"></span>
+                <span class="but-li-l bli"></span>
+                <span class="but-li-l lli"></span>
+                Sign in</a
+            >
+        </li>
+    </ul>
+</div>
+<div class="scene">
+    <div class="layer"></div>
+</div>
+<div class="wrapper">
+    <div class="menu">
+        <a href="#" class="menu-btn"><i class="fas fa-ellipsis-v"></i></a>
+        <nav class="menu-list">
+            <a href="#1">About</a>
+            <a href="#2">News</a>
+            <a href="#3">Contacts</a>
+            <a href="#4">Home</a>
+        </nav>
+    </div>
+    <div class="content">
+        <section class="main">
+            <h2>Главная</h2>
+        </section>
+        <section class="news">
+            <h2>Новости</h2>
+        </section>
+        <section class="contacts">
+            <h2>Контакты</h2>
+        </section>
+        <section class="portfolio">
+            <h2>Портфолио</h2>
+        </section>
+    </div>
+</div>
+
+<script type="text/javascript">
+      $(".menu-btn").on("click", function (e) {
+        e.preventDefault();
+        $(".menu").toggleClass("menu_active");
+        $(".content").toggleClass("content_active");
+        $(".scene").toggleClass("scene_active");
+      });
+
+</script>
+
+<script type="text/javascript">
+      function parallax(event) {
+        this.querySelectorAll(".layer").forEach((layer) => {
+          layer.style.transform = `translateX(${event.clientX / 50}px)`;
+        });
+      }
+      document.addEventListener("mousemove", parallax);
+
+</script>
+<script type="text/javascript">
+      $(function () {
+        $(window).on("scroll resize", function () {
+          var o =
+            $(window).scrollTop() / ($(document).height() - $(window).height());
+          $(".progress-bar").css({
+            width: ((100 * o) | 0) + "%",
+          });
+          $("progress")[0].value = o;
+        });
+      });
+
+</script>
+</body>
+</html>
