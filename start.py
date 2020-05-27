@@ -42,7 +42,7 @@ def qwe():
                            js=url_for("static", filename="js/jQuery.js"),
                            js2=url_for("static", filename="js/main.js"))
 
-@app.route('/register', methods=['GET', 'POST'])
+@app.route('/register/', methods=['GET', 'POST'])
 def qk():
     db_session.global_init("db/blogs.sqlite")
     form = RegisterForm()
@@ -67,7 +67,7 @@ def qk():
                            style3=url_for("static", filename="css/stylesu.css"),
                            form=form)
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login/', methods=['GET', 'POST'])
 def qe():
     db_session.global_init("db/blogs.sqlite")
     form = LoginForm()
